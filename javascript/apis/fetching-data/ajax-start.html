@@ -53,7 +53,7 @@
         <option>Verse 4</option>
       </select>
     </form>
-
+    
     <h2>The Conqueror Worm, <em>Edgar Allen Poe, 1843</em></h2>
     
     <pre>
@@ -71,16 +71,27 @@
       };
       
       function updateDisplay(verse) {
+        verse = verse.replace(" ", "");
+        verse = verse.toLowerCase();
+        let url = verse + '.txt';
+
         let request = new XMLHttpRequest();
+
+        // specify http request method
         request.open("GET", url);
+        // set type of response
         request.responseType = "text";
-        request.onload = () => {
+
+        // when the load event fires (when the response has returned)
+        request.onload = function() {
+          // response data available in response property of XHR request object
           poemDisplay.textContent = request.response;
-          request.send()
+    
         }
-        updateDisplay('Verse 1');
-        verseChoose.value = 'Verse 1';
+        request.send();
       };
+      updateDisplay('Verse 1');
+      verseChoose.value = 'Verse 1';
     </script>
   </body>
   </html>
