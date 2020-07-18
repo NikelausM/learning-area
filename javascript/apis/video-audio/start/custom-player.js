@@ -1,3 +1,4 @@
+// Select tags
 const media = document.querySelector('video');
 const controls = document.querySelector('.controls');
 
@@ -13,6 +14,9 @@ const timerBar = document.querySelector('.timer div');
 media.removeAttribute('controls');
 controls.style.visibility = 'visible';
 
+
+// Play button logic
+
 play.addEventListener('click', playPauseMedia);
 
 function playPauseMedia() {
@@ -23,8 +27,13 @@ function playPauseMedia() {
         play.setAttribute('data-icon','P');// play icon
         media.pause();
     }
+    rwd.classList.remove('active');
+    fwd.classList.remove('active');
+    clearInterval(intervalRwd);
+    clearInterval(intervalFwd);
 }
 
+// Stop button logic 
 stop.addEventListener('click', stopMedia);
 media.addEventListener('ended', stopMedia);
 
@@ -32,8 +41,14 @@ function stopMedia() {
     media.pause();
     media.currentTime = 0;
     play.setAttribute('data-icon','P');
+    
+    rwd.classList.remove('active');
+    fwd.classList.remove('active');
+    clearInterval(intervalRwd);
+    clearInterval(intervalFwd);
 }
 
+// Rewind and fast forward button logic
 rwd.addEventListener('click', mediaBackward);
 fwd.addEventListener('click', mediaForward);
 
@@ -87,5 +102,66 @@ function windForward() {
         stopMedia();
     } else {
         media.currentTime += 3;
+    }
+}
+
+// The timeupdate event is fired when the time indicated by the currentTime attribute has been updated.
+media.addEventListener('timeupdate', handleSetTime(null));
+
+function handleSetTime(currentTime) {
+    return function(e) {
+        setTime(e, currentTime);
+    }
+}
+
+function setTime(e, currentTime) {
+    if(currentTime) {
+        console.log("not null")
+    }
+    currentTime = (currentTime) ? currentTime : media.currentTime;
+    console.log("currentTime: ", currentTime);
+    let minutes = Math.floor(currentTime / 60);
+    let seconds = Math.floor(currentTime - minutes * 60);
+    let minuteValue;
+    let secondValue;
+    
+    minuteValue = (minutes < 10) ? '0' + minutes : minutes;
+    
+    secondValue = (seconds < 10) ? '0' + seconds : seconds;
+    
+    let mediaTime = minuteValue + ':' + secondValue;
+    timer.textContent = mediaTime;
+    
+    let barLength = timerWrapper.clientWidth * (currentTime/media.duration);
+    timerBar.style.width = barLength + 'px';
+}
+
+console.log("bounding: ", timerWrapper.getBoundingClientRect())
+document.onclick = function(e) {
+    console.log(e.x) + ',' + console.log(e.y)
+}
+
+timerWrapper.addEventListener("click", mediaTimeBar);
+
+function mediaTimeBar(e) {
+    try {
+        media.pause();
+        updateTime(e);
+        media.play();
+    }
+    catch(err) {
+        console.log(err);
+    }
+}
+
+function updateTime(e) {
+    try {
+        let barLength = e.x - timerWrapper.getBoundingClientRect().left;
+        let currentTime = (barLength / timerWrapper.clientWidth) * media.duration;
+        setTime(e, currentTime);
+        media.currentTime = currentTime;
+    }
+    catch(err) {
+        console.log(err);
     }
 }
