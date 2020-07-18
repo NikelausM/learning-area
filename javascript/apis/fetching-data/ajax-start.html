@@ -25,6 +25,7 @@
       background-color: white;
     }
     
+    
     label {
       width: 200px;
       margin-right: 33px;
@@ -74,19 +75,19 @@
         verse = verse.replace(" ", "");
         verse = verse.toLowerCase();
         let url = verse + '.txt';
-
+        
         let request = new XMLHttpRequest();
-
+        
         // specify http request method
         request.open("GET", url);
         // set type of response
         request.responseType = "text";
-
+        
         // when the load event fires (when the response has returned)
         request.onload = function() {
           // response data available in response property of XHR request object
           poemDisplay.textContent = request.response;
-    
+          
         }
         request.send();
       };
