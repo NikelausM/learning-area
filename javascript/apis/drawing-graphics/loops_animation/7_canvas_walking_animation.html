@@ -35,6 +35,15 @@
 
       function draw() {
         ctx.fillRect(-(width/2),-(height/2),width,height);
+        // 1: image reference
+        // 2: x-coordinate of top left corner of cut out relative to top-left corner of image
+        // 3: y-coordinate of top left corner of cut out relative to top-left corner of image
+        // 4: width of area of cut out
+        // 5: height of area of cut out
+        // 6: x-coordinate of where to draw top-left corner of cut out
+        // 7: y-coordinate of where to draw top-left corner of cut out
+        // 8: width of area of cut out to draw
+        // 9: height of area of cut out to draw
         ctx.drawImage(image, (sprite*102), 0, 102, 148, 0+posX, -74, 102, 148);
 
         if(posX % 13 === 0) {
