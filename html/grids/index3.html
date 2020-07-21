@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Grid</title>
+  <style>
+    .wrapper {
+      display: grid;
+      /* instead of perecent you can use fractions */
+      grid-template-columns: 1fr 2fr 1fr; 
+      /* arg1 times arg2 to argn */
+      /* grid-template-columns:repeat(3, 1fr 2fr); */
+      grid-gap: 1em;
+      /* 100px high */
+      /* grid-auto-rows: 100px; */
+      /* 100px by default but will stretch to fit content */
+      grid-auto-rows: minmax(100px, auto);
+      /* default is stretch */
+      justify-items: stretch;
+      /* default is stretch */
+      align-items: stretch;
+    }
+    
+    .wrapper > div {
+      background: #eee;
+      padding: 1em;
+    }
+    
+    .wrapper > div:nth-child(odd) {
+      background: #ddd;
+    }
+    
+    .box1 {
+      /* align-self: start; */
+      /* go from vertical line 1 to 3. push anything else out of the way as necessary */
+      grid-column: 1 / 3;
+      grid-row: 1 / 3;
+    }
+    
+    .box2 {
+      /* vertical alignment  */
+      align-self: end;
+      grid-column: 3;
+      /* go from row line 1 to row line 3  */
+      grid-row: 1 / 3;
+
+    }
+    
+    .box3 {
+      /* horizontal alignment  */
+      /* justify-self: end; */
+      /* from column line 2 to 4  */
+      grid-column: 2 / 4;
+      /* from row line 3. This places box 3 after box 4*/
+      grid-row: 3;
+    }
+    
+    .box4 {
+      /* with the next 2 lines make box 4 overlap box 1 */
+      grid-column: 1;
+      grid-row: 2 / 4;
+      border: 1px solid #333;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="box box1">Box 1</div>
+    <div class="box box2">Box 2</div>
+    <div class="box box3">Box 3</div>
+    <div class="box box4">Box 4</div>
+  </div>
+</body>
+</html>
