@@ -5,6 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Flexbox</title>
   <style>
+    /* make it more mobile responsive */
+    @media(min-width:468px) {
+      .container-1 {
+        /* show elements side by side */
+        display: flex;
+        /* align-items: flex-start; */
+        /* align-items: center; */
+        /* stretch is default  */
+        /* align-items: stretch;
+        flex-direction: row; */
+      }
+      
+      .container-2 {
+        display: flex;
+        /* default is flex-start  */
+        /* justify-content: flex-start; */
+        justify-content: space-between;
+      }
+    }
+    
     .container-1 {
       /* show elements side by side */
       display: flex;
@@ -15,7 +35,20 @@
       flex-direction: row;
     }
     
-    .container-1 div {
+    .container-2 {
+      display: flex;
+      /* default is flex-start  */
+      /* justify-content: flex-start; */
+      justify-content: space-between;
+    }
+
+    .container-3 {
+      display:flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    
+    .container-1 div, .container-2 div, .container-3 div{
       border: 1px #ccc solid;
       padding: 10px;
     }
@@ -29,9 +62,20 @@
       flex: 1;
       order: 1;
     }
+    
     .box-3 {
       flex: 1;
       order: 3;
+    }
+    
+    .container-2-box {
+      /* width: 27%; */
+      /* same thing but more flex-box style  */
+      flex-basis: 27%;
+    }
+
+    .container-3-box  {
+      flex-basis: 15%;
     }
     
   </style>
@@ -50,6 +94,49 @@
       <h3>Box Three</h3>
       <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
     </div>
+  </div>
+  
+  <div class="container-2">
+    <div class="container-2-box">
+      <h3>Box Four</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-2-box">
+      <h3>Box Five</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-2-box">
+      <h3>Box Six</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+  </div>
+  
+  <div class="container-3">
+    <div class="container-3-box">
+      <h3>Box Seven</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-3-box">
+      <h3>Box Eight</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-3-box">
+      <h3>Box Nine</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-3-box">
+      <h3>Box Seven</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-3-box">
+      <h3>Box Eight</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    <div class="container-3-box">
+      <h3>Box Nine</h3>
+      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, quam?</p>
+    </div>
+    
   </div>
 </body>
 </html>
