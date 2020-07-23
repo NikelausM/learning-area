@@ -45,3 +45,20 @@ function submitComment() {
   nameField.value = '';
   commentField.value = '';
 }
+
+// Control transcript display
+console.log("here")
+const transcript = document.querySelector('.transcript');
+const transcriptBtn = document.querySelector('.transcript-container button');
+
+transcriptBtn.onclick = function() {
+  console.log("in click")
+  if(transcriptBtn.textContent === 'Show transcript') {
+    console.log("show transcript")
+    transcript.style.height = '150px';
+    transcriptBtn.textContent = 'Hide transcript';
+  } else {
+    transcript.style.height = '0';
+    transcriptBtn.textContent = 'Show transcript';
+  }
+};
