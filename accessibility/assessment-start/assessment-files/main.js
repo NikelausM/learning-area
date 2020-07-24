@@ -30,17 +30,35 @@ form.onsubmit = function(e) {
 
 function submitComment() {
   const listItem = document.createElement('li');
+  const nameLabel = document.createElement('span');
+  const commentLabel = document.createElement('span');
   const namePara = document.createElement('p');
   const commentPara = document.createElement('p');
   const nameValue = nameField.value;
   const commentValue = commentField.value;
 
-  namePara.textContent = nameValue;
-  commentPara.textContent = commentValue;
+  // Make author and message tabbable
+  namePara.setAttribute("tabindex", "0");
+  commentPara.setAttribute("tabindex", "0");
+
+  // Give author and comment labels
+  nameLabel.textContent = "Author: ";
+  commentLabel.textContent = "Comment: ";
+
+  namePara.appendChild(nameLabel);
+  commentPara.appendChild(commentLabel);
+  
+  // Set input from form
+  namePara.innerHTML += nameValue;
+  commentPara.innerHTML += commentValue;
+
+  console.log("attr: ", namePara.getAttribute("tabindex"));
 
   list.appendChild(listItem);
   listItem.appendChild(namePara);
   listItem.appendChild(commentPara);
+
+  console.log("namePara: ", namePara);
 
   nameField.value = '';
   commentField.value = '';
@@ -73,3 +91,10 @@ commentBtn.addEventListener("keydown", (e) => {
   }
 });
 
+// Skip to main content link active styling
+const skipToContentLink = document.querySelector("#skip-to-content-link");
+
+skipToContentLink.addEventListener("focus", (e) => {
+  // console.log("her")
+  skipToContentLink.classList.toggle("skip-to-content-link-visible");
+})
