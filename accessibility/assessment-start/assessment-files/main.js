@@ -15,7 +15,7 @@ showHideBtn.onclick = function() {
     commentWrapper.style.display = 'none';
   }
 };
-
+  
 // functionality for adding a new comment via the comments form
 
 const form = document.querySelector('.comment-form');
@@ -51,10 +51,10 @@ console.log("here")
 const transcript = document.querySelector('.transcript');
 const transcriptBtn = document.querySelector('.transcript-container button');
 
-transcriptBtn.onclick = function() {
-  console.log("in click")
+transcriptBtn.addEventListener("click", toggleTranscript);
+
+function toggleTranscript() {
   if(transcriptBtn.textContent === 'Show transcript') {
-    console.log("show transcript")
     transcript.style.height = '150px';
     transcriptBtn.textContent = 'Hide transcript';
   } else {
@@ -62,3 +62,14 @@ transcriptBtn.onclick = function() {
     transcriptBtn.textContent = 'Show transcript';
   }
 };
+
+// Comments button
+// make "show comments" div button able to be activated with Enter/Return key
+const commentBtn = document.querySelector(".show-hide")
+
+commentBtn.addEventListener("keydown", (e) => {
+  if(e.keyCode === 13) { // The Enter/Return key
+    document.activeElement.click();
+  }
+});
+

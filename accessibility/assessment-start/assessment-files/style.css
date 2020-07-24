@@ -7,7 +7,7 @@ html, body {
 
 html {
   font-size: 10px;
-  background-color: #d8f3dc;
+  background-color: #004D38;
 }
 
 body {
@@ -24,7 +24,7 @@ h1, h2, h3 {
 }
 
 p, input, li, table, label {
-  font-family: 'Open Sans Condensed', sans-serif;
+  font-family: sans-serif;
   color: #081c15;
 }
 
@@ -100,21 +100,26 @@ nav .search {
   padding: 0 2em;
 }
 
-.search input {
+.search input,
+.search button {
   font-size: 1.6rem;
-  height: 32px;
-}
+    height: 32px;
+  }
 
 .search input[type="search"] {
   flex: 3;
 }
 
-.search input[type="submit"] {
+.search button {
   flex: 1;
   margin-left: 1rem;
   background: #333;
   border: 0;
   color: white;
+}
+
+.search label {
+  width: 0;
 }
 
 /* || main layout */
@@ -139,9 +144,14 @@ footer {
 
 table {
   width: 100%;
-  background-color: #52B788;
-  color: #000000;
+  background-color: #004D38;
+  color: #FFFFFF;
   border-collapse: collapse;
+  border: 1px solid #081C15;
+}
+
+table caption {
+  color: #081c15;
 }
 
 th, td {
@@ -157,7 +167,8 @@ th[scope="col"] {
 }
 
 tbody tr:nth-child(odd) {
-  background-color: #def;
+  background-color: #d8f3dc;
+  color: #081C15;
 }
 
 /* styling content images and audio */
@@ -171,22 +182,67 @@ audio {
   width: 500px;
 }
 
+button {
+  display: block;
+  float: left;
+  height: 100%;
+  cursor: pointer;
+  border: 0;
+}
+
+button:hover, button:focus {
+  background-color: #ddd;
+}
+
+button:active {
+  background-color: #ccc;
+}
+
+.transcript-container {
+  width: 480px;
+  margin: 10px auto;
+  border: 2px solid #081C15;
+  min-height: 38px;
+}
+
+.transcript {
+  background-color: #D8F3DC;
+  color: #081C15;
+  height: 0;
+  overflow: auto;
+  padding: 0 10px;
+}
+
+.transcript * {  
+  width: 100%;
+  color: #081C15;
+}
+
+.transcript-container button {
+  width: 100%;
+  height: 36px;
+  background-color: #081C15;
+  color: white;
+}
+
+
 /* Comments styling */
 
 .comments {
-  background-color: #def;
+  background-color: #d8f3dc;
   padding: 10px;
+  border: 1px solid #081C15;
 }
 
 .show-hide {
   cursor: pointer;
 }
 
-.comments font[size="6"] {
+.comments h2 {
   font-size: 2rem;
 }
 
-.comments font[size="6"]:nth-of-type(2) {
+.comments h2:nth-of-type(2) {
   margin-bottom: 0;
 }
 
@@ -205,7 +261,8 @@ audio {
   text-align: right;
 }
 
-.comment-form input {
+.comment-form input, 
+.comment-form button {
   margin-left: 1rem;
   flex: 6;
 }
@@ -215,21 +272,27 @@ audio {
   width: 150px;
 }
 
-.comment-form input, .comment-form label, .show-hide {
+.comment-form input, .comment-form label, 
+.comment-form button, .show-hide {
   font-size: 1.6rem;
   line-height: 32px;
 }
 
-.comment-form input[type="submit"], .show-hide {
-  background: #333;
+.comment-form button, .show-hide {
+  background: #081C15;
   border: 0;
   color: white;
 }
 
-.comment-form input[type="submit"] {
-  width: 30%;
-  display: block;
+.comment-form div[id="submit"] {
   margin: 0 auto;
+}
+
+.comment-form button {
+  display: block;
+  margin: 0 3rem 1rem;
+  float: right;
+  padding: 0 2rem;
 }
 
 .comment-container {
@@ -248,45 +311,4 @@ audio {
 
 .comment-container li p:nth-child(2) {
   flex: 5;
-}
-
-.transcript-container {
-  width: 480px;
-  margin: 10px auto;
-  /* border: 0.25px solid #081C15; */
-  min-height: 38px;
-}
-
-.transcript {
-  background-color: #F1F3F4;
-  color: #081C15;
-  height: 0;
-  overflow: auto;
-  padding: 0 10px;
-}
-
-.transcript * {  width: 100%;
-  color: #081C15;
-}
-
-.transcript-container button {
-  width: 100%;
-  height: 36px;
-}
-
-button {
-  display: block;
-  float: left;
-  margin-right: 2px;
-  height: 100%;
-  width: 50px;
-  cursor: pointer;
-}
-
-button:hover, button:focus {
-  background-color: #ddd;
-}
-
-button:active {
-  background-color: #ccc;
 }
